@@ -46,6 +46,15 @@ app.put("/users/:id", (req: Request, res: Response) => {
     });
 });
 
+app.delete("/users/:id", (req: Request, res: Response) => {
+    let userId = Number(req.params.id);
+    let indexOf = usuarios.findIndex((user: User) => user.id === userId);
+    usuarios.splice(indexOf, 1);
+    res.send({
+        message: "Usuário excluído com sucesso!"
+    })
+});
+
 app.listen(3000, () => {
     console.log("Servidor ativo na porta 3000");
 });
