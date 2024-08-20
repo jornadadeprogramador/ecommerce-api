@@ -8,20 +8,22 @@ app.get("/", (req: Request, res: Response) => {
     res.send("Bem vindo ao Curso de Node.js");
 });
 
-let usuarios = [{
-    nome: "Derci Santos",
-    idade: 33
-}, {
-    nome: "João da Silva",
-    idade: 44
-}];
+let id = 0;
+let usuarios: {id: number, nome: string, email: string}[] = [];
 
 app.get("/users", (req: Request, res: Response) => {
     res.send(usuarios);
 });
 
+app.get("/users/:id", (req: Request, res: Response) => {
+    let userId = Number(req.params.id);
+    let user = usuarios.find(user => user.id === userId);
+    res.send(user);
+});
+
 app.post("/users", (req: Request, res: Response) => {
     let user = req.body;
+    user.id = ++id;
     usuarios.push(user);
     res.send({
         message: "Usuário criado com sucesso!"
