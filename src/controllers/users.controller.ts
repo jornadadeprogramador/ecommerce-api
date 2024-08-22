@@ -38,11 +38,14 @@ export class UsersController {
     }
 
     static update(req: Request, res: Response) {
-        let userId = Number(req.params.id);
-        let user = req.body;
-        let indexOf = usuarios.findIndex((_user: User) => _user.id === userId);
-        usuarios[indexOf].nome = user.nome;
-        usuarios[indexOf].email = user.email;
+        let userId = req.params.id;
+        let user = req.body as User;
+
+        getFirestore().collection("users").doc(userId).set({
+            nome: user.nome,
+            email: user.email
+        });
+        
         res.send({
             message: "Usuário alterado com sucesso!"
         });
