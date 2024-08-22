@@ -9,8 +9,15 @@ type User = {
 let usuarios: User[] = [];
 
 export class UsersController {
-    static getAll(req: Request, res: Response) {
-        res.send(usuarios);
+    static async getAll(req: Request, res: Response) {
+        const snapshot = await getFirestore().collection("users").get();
+        const users = snapshot.docs.map(doc => {
+            return {
+                id: doc.id,
+                ...doc.data()
+            };
+        });
+        res.send(users);
     }
 
     static getById(req: Request, res: Response) {
