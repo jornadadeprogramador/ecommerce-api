@@ -20,10 +20,13 @@ export class UsersController {
         res.send(users);
     }
 
-    static getById(req: Request, res: Response) {
-        let userId = Number(req.params.id);
-        let user = usuarios.find(user => user.id === userId);
-        res.send(user);
+    static async getById(req: Request, res: Response) {
+        let userId = req.params.id;
+        const doc = await getFirestore().collection("users").doc(userId).get();
+        res.send({
+            id: doc.id,
+            ...doc.data()
+        });
     }
 
     static async save(req: Request, res: Response) {
