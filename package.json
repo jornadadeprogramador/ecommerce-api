@@ -12,6 +12,7 @@
   "description": "",
   "dependencies": {
     "express": "^4.19.2",
+    "express-async-handler": "^1.2.0",
     "firebase-admin": "^12.3.1"
   },
   "devDependencies": {
