@@ -1,12 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { getFirestore } from "firebase-admin/firestore";
 import { NotFoundError } from "../errors/not-found.error";
-
-type User = {
-    id: number;
-    nome: string;
-    email: string;
-};
+import { User } from "../models/user.model";
 
 export class UsersController {
     static async getAll(req: Request, res: Response, next: NextFunction) {
