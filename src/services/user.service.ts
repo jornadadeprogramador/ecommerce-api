@@ -1,17 +1,18 @@
 import { getFirestore } from "firebase-admin/firestore";
 import { User } from "../models/user.model";
 import { NotFoundError } from "../errors/not-found.error";
+import { UserRepository } from "../repositories/user.repository";
 
 export class UserService {
 
+    private userRepository: UserRepository;
+
+    constructor() {
+        this.userRepository = new UserRepository();
+    }
+
     async getAll(): Promise<User[]> {
-        const snapshot = await getFirestore().collection("users").get();
-        return snapshot.docs.map(doc => {
-            return {
-                id: doc.id,
-                ...doc.data()
-            };
-        }) as User[];
+        return this.userRepository.getAll();
     }
 
     async getById(id: string): Promise<User> {
