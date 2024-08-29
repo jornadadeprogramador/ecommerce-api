@@ -26,11 +26,11 @@ export class UserService {
         }
     }
 
-    async save(user: User): Promise<void> {
+    async save(user: User) {
         await getFirestore().collection("users").add(user);
     }
 
-    async update(id: string, user: User): Promise<void> {
+    async update(id: string, user: User) {
         let docRef = getFirestore().collection("users").doc(id);
         if ((await docRef.get()).exists) {
             await docRef.set({
@@ -42,7 +42,7 @@ export class UserService {
         }
     }
 
-    async delete(id: string): Promise<void> {
+    async delete(id: string) {
         await getFirestore().collection("users").doc(id).delete();
     }
 
