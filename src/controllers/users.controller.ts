@@ -2,17 +2,11 @@ import { NextFunction, Request, Response } from "express";
 import { getFirestore } from "firebase-admin/firestore";
 import { NotFoundError } from "../errors/not-found.error";
 import { User } from "../models/user.model";
+import { UserService } from "../services/user.service";
 
 export class UsersController {
     static async getAll(req: Request, res: Response, next: NextFunction) {
-        const snapshot = await getFirestore().collection("users").get();
-        const users = snapshot.docs.map(doc => {
-            return {
-                id: doc.id,
-                ...doc.data()
-            };
-        });
-        res.send(users);
+        res.send(await new UserService().getAll());
     }
 
     static async getById(req: Request, res: Response, next: NextFunction) {
