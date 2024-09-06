@@ -1,10 +1,14 @@
 import express from "express";
-import { initializeApp } from "firebase-admin/app";
+import { initializeApp as initializeAdminApp } from "firebase-admin/app";
+import { initializeApp as initializeFirebaseApp } from "firebase/app";
 import { routes } from "./routes/index";
 import { errorHandler } from "./middlewares/error-handler.middleware";
-import {pageNotFoundHandler} from "./middlewares/page-not-found.middleware";
+import { pageNotFoundHandler } from "./middlewares/page-not-found.middleware";
 
-initializeApp();
+initializeAdminApp();
+initializeFirebaseApp({
+    apiKey: process.env.FIRE_API_KEY
+});
 const app = express();
 
 routes(app);
