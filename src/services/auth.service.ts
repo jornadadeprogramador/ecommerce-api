@@ -1,4 +1,6 @@
+import { FirebaseError } from "firebase/app";
 import { EmailAlreadyExistsError } from "../errors/email-already-exists.error";
+import { UnauthorizedError } from "../errors/unauthorized.error";
 import { User } from "../models/user.model";
 import { FirebaseAuthError, getAuth, UserRecord } from "firebase-admin/auth";
 import { getAuth as getFirebaseAuth, signInWithEmailAndPassword, UserCredential } from "firebase/auth";
@@ -20,7 +22,15 @@ export class AuthService {
         }
     }
 
-    login(email: string, password: string): Promise<UserCredential> {
-        return signInWithEmailAndPassword(getFirebaseAuth(), email, password);
+    async login(email: string, password: string): Promise<UserCredential> {
+        return await signInWithEmailAndPassword(getFirebaseAuth(), email, password)
+            .catch(err => {
+                if (err instanceof FirebaseError) {
+                    if (err.code === "auth/invalid-credential") {
+                        throw new UnauthorizedError();
+                    }
+                }
+                throw err;
+            });
     }
 }
