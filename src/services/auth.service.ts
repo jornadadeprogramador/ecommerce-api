@@ -46,4 +46,8 @@ export class AuthService {
                 throw err;
             });
     }
+
+    async delete(id: string) {
+        await getAuth().deleteUser(id);
+    }
 }
