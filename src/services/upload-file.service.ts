@@ -20,6 +20,8 @@ export class UploadFileService {
             destination: this.path + fileName
         });
 
+        fs.unlinkSync(fileName);
+
         return getDownloadURL(uploadResponse[0]);
     }
 }
