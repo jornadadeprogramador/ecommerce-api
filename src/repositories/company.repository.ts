@@ -1,5 +1,5 @@
 import { CollectionReference, getFirestore } from "firebase-admin/firestore";
-import { Company } from "../models/company.model";
+import { Company } from "../models/company.model.js";
 
 export class CompanyRepository {
 

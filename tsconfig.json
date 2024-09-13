@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/recommended/tsconfig.json",
+  "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
     "rootDir": "src", // Diretório de códigos TypeScript
     "outDir": "lib", // Diretório de saída para os arquivos compilados

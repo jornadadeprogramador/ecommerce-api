@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 import { getStorage, getDownloadURL } from "firebase-admin/storage";
 import { fileTypeFromBuffer } from "file-type";
 

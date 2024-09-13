@@ -1,5 +1,5 @@
 import { CollectionReference, getFirestore } from "firebase-admin/firestore";
-import { User } from "../models/user.model";
+import { User } from "../models/user.model.js";
 
 export class UserRepository {
 
