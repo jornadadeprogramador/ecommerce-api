@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import { getStorage, getDownloadURL } from "firebase-admin/storage";
 import { fileTypeFromBuffer } from "file-type";
+import { randomUUID } from "node:crypto";
 
 export class UploadFileService {
 
@@ -11,7 +12,7 @@ export class UploadFileService {
 
         const fileType = await fileTypeFromBuffer(fileBuffer);
 
-        const fileName = `image.${fileType?.ext}`;
+        const fileName = `${randomUUID().toString()}.${fileType?.ext}`;
         fs.writeFileSync(fileName, fileBuffer);
 
         const bucket = getStorage().bucket("e-commerce-d1288.appspot.com");
