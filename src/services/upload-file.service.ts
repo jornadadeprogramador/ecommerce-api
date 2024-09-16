@@ -16,6 +16,9 @@ export class UploadFileService {
             throw new ValidationError("A extensão do arquivo não é válida!");
         }
 
+        if (fileType.mime !== "image/jpeg" && fileType.mime !== "image/png") {
+            throw new ValidationError("A imagem precisa ser PNG ou JPEG!");
+        }
 
         const fileName = `${randomUUID().toString()}.${fileType?.ext}`;
         fs.writeFileSync(fileName, fileBuffer);
