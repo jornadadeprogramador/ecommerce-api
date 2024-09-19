@@ -8,8 +8,8 @@ export class ProductsController {
     }
 
     static async search(req: Request, res: Response) {
-        console.log(req.query);
-        res.end();
+        const categoriaId = req.query.categoriaId as string;
+        res.send(await new ProductService().search(categoriaId));
     }
 
     static async getById(req: Request, res: Response) {
