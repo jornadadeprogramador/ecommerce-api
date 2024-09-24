@@ -8,13 +8,13 @@ export type User = {
 };
 
 export const newUserSchema = Joi.object().keys({
-    nome: Joi.string().required(),
+    nome: Joi.string().trim().required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(6).required()
 });
 
 export const updateUserSchema = Joi.object().keys({
-    nome: Joi.string().required(),
+    nome: Joi.string().trim().required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(6)
 });

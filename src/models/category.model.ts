@@ -7,11 +7,11 @@ export type Category = {
 }
 
 export const newCategorySchema = Joi.object().keys({
-    descricao: Joi.string().min(3).required(),
+    descricao: Joi.string().trim().min(3).required(),
     ativa: Joi.boolean().only().allow(true).default(true)
 });
 
 export const updateCategorySchema = Joi.object().keys({
-    descricao: Joi.string().min(3).required(),
+    descricao: Joi.string().trim().min(3).required(),
     ativa: Joi.boolean().required(),
 });
