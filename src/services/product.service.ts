@@ -14,7 +14,7 @@ export class ProductService {
     constructor() {
         this.productRepository = new ProductRepository();
         this.categoryRepository = new CategoryRepository();
-        this.uploadFileService = new UploadFileService();
+        this.uploadFileService = new UploadFileService("images/products/");
     }
 
     async getAll(): Promise<Product[]> {

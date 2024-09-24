@@ -6,7 +6,7 @@ import { ValidationError } from "../errors/validation.error.js";
 
 export class UploadFileService {
 
-    constructor(private path: string = "") { }
+    constructor(private path: string) { }
 
     async upload(base64: string): Promise<string> {
         const fileBuffer = Buffer.from(base64, "base64");
