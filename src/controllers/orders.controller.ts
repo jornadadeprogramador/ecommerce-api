@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { OrderService } from "../services/order.service.js";
-import { Order } from "../models/order.model.js";
+import { Order, QueryParamsOrder } from "../models/order.model.js";
 
 export class OrdersController {
     static async save(req: Request, res: Response) {
@@ -11,8 +11,8 @@ export class OrdersController {
         });
     }
 
-    static search(req: Request, res: Response) {
-        console.log(req.query);
-        res.send(req.query);
+    static async search(req: Request, res: Response) {
+        const orders = await new OrderService().search(req.query as QueryParamsOrder);
+        res.send(orders);
     }
 }
