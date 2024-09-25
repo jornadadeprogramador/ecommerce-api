@@ -10,4 +10,9 @@ export class OrdersController {
             message: "Pedido criado com sucesso!"
         });
     }
+
+    static search(req: Request, res: Response) {
+        console.log(req.query);
+        res.send(req.query);
+    }
 }
