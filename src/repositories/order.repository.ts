@@ -13,8 +13,18 @@ export class OrderRepository {
         await this.collection.add(order);
     }
 
-    async search(query: QueryParamsOrder): Promise<Order[]> {
-        const snapshot = await this.collection.get();
+    async search(queryParams: QueryParamsOrder): Promise<Order[]> {
+        let query: FirebaseFirestore.Query = this.collection;
+        
+        if (queryParams.empresaId) {
+            query = query.where("empresa.id", "==", queryParams.empresaId);
+        }
+
+        if (queryParams.status) {
+            query = query.where("status", "==", queryParams.status);
+        }
+
+        const snapshot = await query.get();
         return snapshot.docs.map(doc => {
             return {
                 id: doc.id,
