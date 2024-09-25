@@ -40,6 +40,8 @@ export class OrderService {
             item.produto = produto;
         }
 
+        order.data = new Date();
+
         await this.orderRepository.save(order);
     }
 
