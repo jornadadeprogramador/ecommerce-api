@@ -1,5 +1,6 @@
 import { CollectionReference, getFirestore } from "firebase-admin/firestore";
 import { Order, QueryParamsOrder } from "../models/order.model.js";
+import dayjs = require("dayjs");
 
 export class OrderRepository {
 
@@ -21,10 +22,12 @@ export class OrderRepository {
         }
         
         if (queryParams.dataInicio) {
+            queryParams.dataInicio = dayjs(queryParams.dataInicio).add(1, "day").startOf("day").toDate();
             query = query.where("data", ">=", queryParams.dataInicio);
         }
         
         if (queryParams.dataFim) {
+            queryParams.dataFim = dayjs(queryParams.dataFim).add(1, "day").endOf("day").toDate();
             query = query.where("data", "<=", queryParams.dataFim);
         }
 
