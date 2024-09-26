@@ -18,6 +18,7 @@ export class Order {
     taxaEntrega: number;
     items: OrderItem[];
     status: OrderStatus;
+    observacoes: string;
 
     constructor(data: any) {
         this.id = data.id;
@@ -35,6 +36,7 @@ export class Order {
         this.taxaEntrega = data.taxaEntrega;
         this.items = data.items;
         this.status = data.status ?? OrderStatus.pendente;
+        this.observacoes = data.observacoes;
     }
 };
 
@@ -68,7 +70,8 @@ export const newOrderSchema = Joi.object().keys({
     }).required(),
     taxaEntrega: Joi.number().min(0).required(),
     items: Joi.array().min(1).items(orderItemSchema).required(),
-    status: Joi.string().only().allow(OrderStatus.pendente).default(OrderStatus.pendente)
+    status: Joi.string().only().allow(OrderStatus.pendente).default(OrderStatus.pendente),
+    observacoes: Joi.string().trim().allow(null).default(null)
 });
 
 export type QueryParamsOrder = {
@@ -135,7 +138,8 @@ export const orderConverter: FirestoreDataConverter<Order> = {
                     observacao: item.observacao
                 }
             }),
-            status: order.status
+            status: order.status,
+            observacoes: order.observacoes
         };
     },
     fromFirestore: (snapshot: QueryDocumentSnapshot): Order => {
