@@ -4,8 +4,10 @@ import { Customer, customerSchema } from "./customer.model.js";
 import { OrderItem, orderItemSchema } from "./order-item.model.js";
 import { PaymentMethod } from "./payment-method.model.js";
 import { Address, orderAddressSchema } from "./address.model.js";
+import { Timestamp } from "firebase-admin/firestore";
 
-export type Order = {
+export class Order {
+    id: string;
     empresa: Company;
     cliente: Customer;
     endereco: Address;
@@ -16,6 +18,24 @@ export type Order = {
     taxaEntrega: number;
     items: OrderItem[];
     status: OrderStatus;
+
+    constructor(data: any) {
+        this.id = data.id;
+        this.empresa = data.empresa;
+        this.cliente = data.cliente;
+        this.endereco = data.endereco;
+        this.cpfCnpjCupom = data.cpfCnpjCupom;
+        if (data.data instanceof Timestamp) {
+            this.data = data.data.toDate();
+        } else {
+            this.data = data.data;
+        }
+        this.isEntrega = data.isEntrega;
+        this.formaPagamento = data.formaPagamento;
+        this.taxaEntrega = data.taxaEntrega;
+        this.items = data.items;
+        this.status = data.status;
+    }
 };
 
 export enum OrderStatus {

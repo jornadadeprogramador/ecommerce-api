@@ -37,11 +37,11 @@ export class OrderRepository {
 
         const snapshot = await query.get();
         return snapshot.docs.map(doc => {
-            return {
+            return new Order({
                 id: doc.id,
                 ...doc.data()
-            } as unknown;
-        }) as Order[];
+            });
+        });
     }
     
 }
