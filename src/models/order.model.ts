@@ -4,7 +4,7 @@ import { Customer, customerSchema } from "./customer.model.js";
 import { OrderItem, orderItemSchema } from "./order-item.model.js";
 import { PaymentMethod } from "./payment-method.model.js";
 import { Address, orderAddressSchema } from "./address.model.js";
-import { DocumentData, FirestoreDataConverter, QueryDocumentSnapshot, Timestamp } from "firebase-admin/firestore";
+import { DocumentData, FieldValue, FirestoreDataConverter, QueryDocumentSnapshot, Timestamp } from "firebase-admin/firestore";
 
 export class Order {
     id: string;
@@ -114,7 +114,7 @@ export const orderConverter: FirestoreDataConverter<Order> = {
                 uf: order.endereco.uf
             },
             cpfCnpjCupom: order.cpfCnpjCupom,
-            data: order.data,
+            data: FieldValue.serverTimestamp(),
             isEntrega: order.isEntrega,
             formaPagamento: {
                 id: order.formaPagamento.id,
