@@ -1,6 +1,6 @@
 import { CollectionReference, getFirestore } from "firebase-admin/firestore";
 import { Order, QueryParamsOrder } from "../models/order.model.js";
-import dayjs = require("dayjs");
+import dayjs from "dayjs";
 
 export class OrderRepository {
 

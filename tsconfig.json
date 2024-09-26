@@ -8,7 +8,8 @@
     "noImplicitReturns": true, // Verifica se todas as funções possuem tipo de retorno informado
     "noEmitOnError": true, // Não gera o código JS caso haja algum erro durante o processo de compilação
     "strictNullChecks": true, // Força a verificação de valores null ou undefined
-    "noUnusedLocals": true // Sinaliza quando existem variáveis declaradas e não utilizadas
+    "noUnusedLocals": true, // Sinaliza quando existem variáveis declaradas e não utilizadas
+    "allowSyntheticDefaultImports": true
   },
   "compileOnSave": true,
   "include": ["src/**/*"],
