@@ -3,29 +3,30 @@ import { Company, companyConverter } from "../models/company.model.js";
 
 export class CompanyRepository {
 
-    private collection: CollectionReference;
+    private collection: CollectionReference<Company>;
 
     constructor() {
-        this.collection = getFirestore().collection("companies");
+        this.collection = getFirestore()
+            .collection("companies")
+            .withConverter(companyConverter);
     }
 
     async getAll(): Promise<Company[]> {
-        const snapshot = await this.collection.withConverter(companyConverter).get();
+        const snapshot = await this.collection.get();
         return snapshot.docs.map(doc => doc.data());
     }
 
     async getById(id: string): Promise<Company | null> {
-        const doc = await this.collection.withConverter(companyConverter).doc(id).get();
+        const doc = await this.collection.doc(id).get();
         return doc.data() ?? null;
     }
 
     async save(company: Company) {
-        await this.collection.withConverter(companyConverter).add(company);
+        await this.collection.add(company);
     }
 
     async update(company: Company) {
         await this.collection
-            .withConverter(companyConverter)
             .doc(company.id)
             .set(company);
     }
