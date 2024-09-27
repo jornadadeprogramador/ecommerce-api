@@ -121,23 +121,6 @@ export const orderConverter: FirestoreDataConverter<Order> = {
                 descricao: order.formaPagamento.descricao
             },
             taxaEntrega: order.empresa.taxaEntrega,
-            items: order.items.map(item => {
-                return {
-                    produto: {
-                        id: item.produto.id,
-                        nome: item.produto.nome,
-                        descricao: item.produto.descricao,
-                        preco: item.produto.preco,
-                        imagem: item.produto.imagem,
-                        categoria: {
-                            id: item.produto.categoria.id,
-                            descricao: item.produto.categoria.descricao
-                        }
-                    },
-                    qtde: item.qtde,
-                    observacao: item.observacao
-                }
-            }),
             status: order.status,
             observacoes: order.observacoes
         };
