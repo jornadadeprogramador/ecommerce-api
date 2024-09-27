@@ -1,6 +1,7 @@
 import { CollectionReference, getFirestore } from "firebase-admin/firestore";
 import { Order, orderConverter, QueryParamsOrder } from "../models/order.model.js";
 import dayjs from "dayjs";
+import { orderItemConverter } from "../models/order-item.model.js";
 
 export class OrderRepository {
 
@@ -13,7 +14,13 @@ export class OrderRepository {
     }
 
     async save(order: Order) {
-        await this.collection.add(order);
+        const orderRef = await this.collection.add(order);
+        for (let item of order.items) {
+            await orderRef
+                .collection("items")
+                .withConverter(orderItemConverter)
+                .add(item);
+        }
     }
 
     async search(queryParams: QueryParamsOrder): Promise<Order[]> {
