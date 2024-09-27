@@ -14,13 +14,20 @@ export class OrderRepository {
     }
 
     async save(order: Order) {
-        const orderRef = await this.collection.add(order);
+        const batch = getFirestore().batch();
+
+        // Cabeçalho do pedido
+        const orderRef = this.collection.doc();
+        batch.create(orderRef, order);
+
+        // Itens do pedido
+        const itemsRef = orderRef.collection("items")
+            .withConverter(orderItemConverter);
         for (let item of order.items) {
-            await orderRef
-                .collection("items")
-                .withConverter(orderItemConverter)
-                .add(item);
+            batch.create(itemsRef.doc(), item);
         }
+
+        await batch.commit();
     }
 
     async search(queryParams: QueryParamsOrder): Promise<Order[]> {
