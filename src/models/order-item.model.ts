@@ -14,6 +14,10 @@ export class OrderItem {
         this.qtde = data.qtde;
         this.observacao = data.observacao;
     }
+
+    getTotal(): number {
+        return this.qtde * this.produto.preco;
+    }
 }
 
 export const orderItemSchema = Joi.object().keys({

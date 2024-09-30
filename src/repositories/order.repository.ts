@@ -23,7 +23,7 @@ export class OrderRepository {
         // Itens do pedido
         const itemsRef = orderRef.collection("items")
             .withConverter(orderItemConverter);
-        for (let item of order.items) {
+        for (let item of order.items!) {
             batch.create(itemsRef.doc(), item);
         }
 

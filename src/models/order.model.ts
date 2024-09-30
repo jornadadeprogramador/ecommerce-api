@@ -16,9 +16,11 @@ export class Order {
     isEntrega: boolean;
     formaPagamento: PaymentMethod;
     taxaEntrega: number;
-    items: OrderItem[];
+    items?: OrderItem[];
     status: OrderStatus;
     observacoes: string;
+    subtotal: number;
+    total: number;
 
     constructor(data: any) {
         this.id = data.id;
@@ -34,9 +36,20 @@ export class Order {
         this.isEntrega = data.isEntrega;
         this.formaPagamento = data.formaPagamento;
         this.taxaEntrega = data.taxaEntrega;
-        this.items = data.items;
+        this.items = data.items?.map((item: any) => new OrderItem(item));
         this.status = data.status ?? OrderStatus.pendente;
         this.observacoes = data.observacoes;
+        this.subtotal = data.subtotal;
+        this.total = data.total;
+    }
+
+    getSubtotal(): number {
+        return this.items?.map(item => item.getTotal())
+            .reduce((total, next) => total + next, 0) ?? 0;
+    }
+
+    getTotal(): number {
+        return this.getSubtotal() + this.taxaEntrega;
     }
 };
 
@@ -122,7 +135,9 @@ export const orderConverter: FirestoreDataConverter<Order> = {
             },
             taxaEntrega: order.empresa.taxaEntrega,
             status: order.status,
-            observacoes: order.observacoes
+            observacoes: order.observacoes,
+            subtotal: order.getSubtotal(),
+            total: order.getTotal()
         };
     },
     fromFirestore: (snapshot: QueryDocumentSnapshot): Order => {
