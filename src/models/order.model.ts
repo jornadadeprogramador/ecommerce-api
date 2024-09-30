@@ -24,7 +24,7 @@ export class Order {
 
     constructor(data: any) {
         this.id = data.id;
-        this.empresa = data.empresa;
+        this.empresa = new Company(data.empresa);
         this.cliente = data.cliente;
         this.endereco = data.endereco;
         this.cpfCnpjCupom = data.cpfCnpjCupom;
@@ -34,7 +34,7 @@ export class Order {
             this.data = data.data;
         }
         this.isEntrega = data.isEntrega;
-        this.formaPagamento = data.formaPagamento;
+        this.formaPagamento = new PaymentMethod(data.formaPagamento);
         this.taxaEntrega = data.taxaEntrega;
         this.items = data.items?.map((item: any) => new OrderItem(item));
         this.status = data.status ?? OrderStatus.pendente;
@@ -133,7 +133,7 @@ export const orderConverter: FirestoreDataConverter<Order> = {
                 id: order.formaPagamento.id,
                 descricao: order.formaPagamento.descricao
             },
-            taxaEntrega: order.empresa.taxaEntrega,
+            taxaEntrega: order.taxaEntrega,
             status: order.status,
             observacoes: order.observacoes,
             subtotal: order.getSubtotal(),
