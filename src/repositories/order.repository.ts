@@ -1,7 +1,7 @@
 import { CollectionReference, getFirestore } from "firebase-admin/firestore";
 import { Order, orderConverter, QueryParamsOrder } from "../models/order.model.js";
 import dayjs from "dayjs";
-import { orderItemConverter } from "../models/order-item.model.js";
+import { OrderItem, orderItemConverter } from "../models/order-item.model.js";
 
 export class OrderRepository {
 
@@ -52,6 +52,15 @@ export class OrderRepository {
         }
 
         const snapshot = await query.get();
+        return snapshot.docs.map(doc => doc.data());
+    }
+
+    async getItems(pedidoId: string): Promise<OrderItem[]> {
+        const pedidoRef = this.collection.doc(pedidoId);
+        const snapshot = await pedidoRef
+            .collection("items")
+            .withConverter(orderItemConverter)
+            .get();
         return snapshot.docs.map(doc => doc.data());
     }
 
