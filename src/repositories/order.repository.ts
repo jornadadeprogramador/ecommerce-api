@@ -2,6 +2,7 @@ import { CollectionReference, getFirestore } from "firebase-admin/firestore";
 import { Order, orderConverter, QueryParamsOrder } from "../models/order.model.js";
 import dayjs from "dayjs";
 import { OrderItem, orderItemConverter } from "../models/order-item.model.js";
+import { NotFoundError } from "../errors/not-found.error.js";
 
 export class OrderRepository {
 
@@ -62,6 +63,15 @@ export class OrderRepository {
             .withConverter(orderItemConverter)
             .get();
         return snapshot.docs.map(doc => doc.data());
+    }
+
+    async getById(pedidoId: string): Promise<Order> {
+        const order = (await this.collection.doc(pedidoId).get()).data();
+        if (!order) {
+            throw new NotFoundError("Pedido não encontrado!");
+        }
+        order.items = await this.getItems(pedidoId);
+        return order;
     }
 
 }

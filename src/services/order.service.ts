@@ -51,4 +51,8 @@ export class OrderService {
     async getItems(pedidoId: string): Promise<OrderItem[]> {
         return this.orderRepository.getItems(pedidoId);
     }
+
+    async getById(pedidoId: string): Promise<Order> {
+        return this.orderRepository.getById(pedidoId);
+    }
 }
