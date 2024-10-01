@@ -7,11 +7,6 @@ export const allowAnonymousUser = (req: Request, res: Response, next: NextFuncti
     }
 
     if (req.method === "GET") {
-        // Empresas
-        // Produtos
-        // Categorias
-        // Formas de Pagamento
-        // Pedido pelo ID
         if (req.url === "/companies" ||
             req.url === "/products" ||
             req.url === "/categories" ||
