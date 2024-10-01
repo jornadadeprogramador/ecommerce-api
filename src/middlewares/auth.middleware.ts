@@ -6,16 +6,16 @@ import { ForbiddenError } from "../errors/forbidden.error.js";
 
 export const auth = (app: express.Express) => {
     app.use(async (req: Request, res: Response, next: NextFunction) => {
-        if (req.method === "POST" && (req.url.endsWith("/auth/login") || req.url.endsWith("/auth/recovery"))) {
+        if (isRouteUnAuthenticated(req)) {
             return next();
         }
-        
+
         const token = req.headers.authorization?.split("Bearer ")[1];
 
         if (token) {
             try {
                 const decodeIdToken: DecodedIdToken = await getAuth().verifyIdToken(token, true);
-                
+
                 const user = await new UserService().getById(decodeIdToken.uid);
                 if (!user) {
                     return next(new ForbiddenError());
@@ -30,4 +30,15 @@ export const auth = (app: express.Express) => {
 
         next(new UnauthorizedError());
     });
+
+    const isRouteUnAuthenticated = (req: Request): boolean => {
+        if (req.method === "POST") {
+            if (req.url.startsWith("/auth/login") ||
+                req.url.startsWith("/auth/recovery") ||
+                req.url.startsWith("/auth/signin")) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
