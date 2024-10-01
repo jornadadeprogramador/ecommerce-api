@@ -1,4 +1,4 @@
-/node_modules
-/lib
-firebase-adminsdk.json
+/*.log
+firebase.json
+.firebaserc
 .env
