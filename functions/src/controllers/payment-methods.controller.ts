@@ -8,7 +8,7 @@ export class PaymentMethodsController {
     }
 
     static async getById(req: Request, res: Response) {
-        let paymentMethodId = req.params.id;
+        const paymentMethodId = req.params.id;
         res.send(await new PaymentMethodService().getById(paymentMethodId));
     }
 
@@ -20,8 +20,8 @@ export class PaymentMethodsController {
     }
 
     static async update(req: Request, res: Response) {
-        let paymentMethodId = req.params.id;
-        let paymentMethod = req.body as PaymentMethod;
+        const paymentMethodId = req.params.id;
+        const paymentMethod = req.body as PaymentMethod;
         await new PaymentMethodService().update(paymentMethodId, paymentMethod);
         res.send({
             message: "Forma de Pagamento alterada com sucesso!"

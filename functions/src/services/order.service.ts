@@ -33,7 +33,7 @@ export class OrderService {
         }
         order.formaPagamento = formaPagamento;
 
-        for (let item of order.items!) {
+        for (const item of order.items!) {
             const produto = await this.productRepository.getById(item.produto.id);
             if (!produto) {
                 throw new NotFoundError("Produto não encontrado!");
