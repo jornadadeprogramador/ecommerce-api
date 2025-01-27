@@ -73,11 +73,62 @@ Se você ainda não tem o Firebase CLI instalado em sua máquina, será necessá
 npm install -g firebase-tools
 ```
 
-#### 4.1 Executar localmente
+#### 4.2 Inicializar o projeto com Firebase CLI
+
+Agora precisamos iniciar o Firebase dentro do nosso projeto.
+
+**IMPORTANTE:** Certifique-se de estar na raíz do repositório e não dentro do diretório `functions`!
+
+```bash
+firebase init
+```
+
+Se aparecer a seguinte mensagem: `Error: Failed to authenticate, have you run firebase login?`
+
+Faça login no firebase antes de prosseguir:
+
+```bash
+firebase login && firebase init
+```
+
+O Firebase CLI irá lhe fazer algumas perguntas:
+
+**Which Firebase features do you want to set up for this directory?**
+Responda: *Functions: Configure a Cloud Functions directory and its files*
+
+**First, let's associate this project directory with a Firebase project.**
+Escolha a opção de acordo com seu momento:
+
+ - Se você já tem um projeto criado no Firebase -> *Use an existing project*
+ - Se você precisar criar seu projeto no Firebase -> *Create a new project*
+
+**What language would you like to use to write Cloud Functions?**
+Responda: *TypeScript*
+
+**Do you want to use ESLint to catch probable bugs and enforce style?**
+Responda: *n*
+
+**File functions/package.json already exists. Overwrite?**
+Responda: *n*
+
+**File functions/tsconfig.json already exists. Overwrite?**
+Responda: *n*
+
+**File functions/src/index.ts already exists. Overwrite?**
+Responda: *n*
+
+**File functions/.gitignore already exists. Overwrite?**
+Responda: *n*
+
+**Do you want to install dependencies with npm now?**
+Responda: *y*
+
+#### 4.3 Executar localmente
 
 Para rodar a API em modo de desenvolvimento usando o Firebase Emulators:
 
 ```bash
+npm run build
 npm start
 ```
 
