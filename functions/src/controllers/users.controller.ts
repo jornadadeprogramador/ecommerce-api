@@ -4,15 +4,18 @@ import { UserService } from "../services/user.service.js";
 
 export class UsersController {
     static async getAll(req: Request, res: Response) {
+        // #swagger.tags = ['Users']
         res.send(await new UserService().getAll());
     }
 
     static async getById(req: Request, res: Response) {
+        // #swagger.tags = ['Users']
         const userId = req.params.id;
         res.send(await new UserService().getById(userId));
     }
 
     static async save(req: Request, res: Response) {
+        // #swagger.tags = ['Users']
         await new UserService().save(req.body);
         res.status(201).send({
             message: `Usuário criado com sucesso!`
@@ -20,6 +23,7 @@ export class UsersController {
     }
 
     static async update(req: Request, res: Response) {
+        // #swagger.tags = ['Users']
         const userId = req.params.id;
         const user = req.body as User;
         await new UserService().update(userId, user);
@@ -29,6 +33,7 @@ export class UsersController {
     }
 
     static async delete(req: Request, res: Response) {
+        // #swagger.tags = ['Users']
         const userId = req.params.id;
         await new UserService().delete(userId);
         res.status(204).end();

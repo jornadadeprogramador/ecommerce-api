@@ -11,6 +11,36 @@ const doc = {
             description: 'Dev'
         },
     ],
+    tags: [
+        {
+            "name": "Auth",
+            "description": "Autenticação de usuários"
+        },
+        {
+            "name": "Users",
+            "description": "Gestão de usuários"
+        },
+        {
+            "name": "Companies",
+            "description": "Gestão de empresas"
+        },
+        {
+            "name": "Categories",
+            "description": "Gestão das categorias de produtos"
+        },
+        {
+            "name": "Products",
+            "description": "Catálogo de produtos da empresa"
+        },
+        {
+            "name": "Payment Methods",
+            "description": "Gestão das formas de pagamento"
+        },
+        {
+            "name": "Orders",
+            "description": "Gestão de pedidos"
+        }
+    ],
 };
 
 const outputFile = './src/docs/swagger-output.json';
