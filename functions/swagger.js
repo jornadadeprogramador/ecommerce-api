@@ -11,6 +11,14 @@ const doc = {
             description: 'Dev'
         },
     ],
+    components: {
+        securitySchemes: {
+            bearerAuth: {
+                type: 'http',
+                scheme: 'bearer'
+            }
+        }
+    },
     tags: [
         {
             "name": "Auth",

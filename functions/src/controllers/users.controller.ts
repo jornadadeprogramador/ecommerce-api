@@ -7,6 +7,7 @@ export class UsersController {
         // #swagger.tags = ['Users']
         // #swagger.summary = 'Obtenha todos os usuários cadastrados'
         // #swagger.description = 'Obtenha todos os usuários da empresa.'
+        // #swagger.security = [{ "bearerAuth": [] }]
         res.send(await new UserService().getAll());
     }
 
