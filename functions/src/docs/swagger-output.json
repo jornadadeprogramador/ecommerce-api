@@ -47,7 +47,8 @@
         "tags": [
           "Auth"
         ],
-        "description": "",
+        "summary": "Autenticação de usuários administradores",
+        "description": "Rota utilizada para autenticação de usuários administradores usando e-mail e senha.",
         "responses": {
           "200": {
             "description": "OK"
@@ -77,7 +78,8 @@
         "tags": [
           "Auth"
         ],
-        "description": "",
+        "summary": "Recuperação de senha",
+        "description": "Rota utilizada para recuperação de senhas através do e-mail do usuário. Receba um e-mail para recuperação de senhas.",
         "responses": {
           "default": {
             "description": ""
@@ -104,7 +106,8 @@
         "tags": [
           "Auth"
         ],
-        "description": "",
+        "summary": "Autenticação anônima de usuários clientes",
+        "description": "Rota utilizada para autenticação de usuários clientes para realização de pedidos sem a necessidade de um cadastro prévio.",
         "responses": {
           "200": {
             "description": "OK"
@@ -117,7 +120,8 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "summary": "Obtenha todos os usuários cadastrados",
+        "description": "Obtenha todos os usuários da empresa.",
         "responses": {
           "200": {
             "description": "OK"
@@ -128,7 +132,8 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "summary": "Crie um novo usuário",
+        "description": "Crie um novo usuário para acessar as funcionalidades da empresa.",
         "responses": {
           "201": {
             "description": "Created"
@@ -141,7 +146,8 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "summary": "Busque um usuário pelo id",
+        "description": "Obtenha um usuário pelo id.",
         "parameters": [
           {
             "name": "id",
@@ -162,7 +168,8 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "summary": "Atualize os dados do usuário",
+        "description": "Atualize os dados de um usuário específico.",
         "parameters": [
           {
             "name": "id",
@@ -183,7 +190,8 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "summary": "Exclua um usuário",
+        "description": "Exclua um usuário pelo id.<br><br><b>Obs.:</b> <i>Essa ação é irreversível. Após excluído não será possível recuperar os dados do usuário.</i>",
         "parameters": [
           {
             "name": "id",
@@ -206,7 +214,8 @@
         "tags": [
           "Companies"
         ],
-        "description": "",
+        "summary": "Obtenha todas as empresas cadastradas",
+        "description": "Obtenha todas as empresas cadastradas.",
         "responses": {
           "200": {
             "description": "OK"
@@ -217,7 +226,8 @@
         "tags": [
           "Companies"
         ],
-        "description": "",
+        "summary": "Crie uma nova empresa",
+        "description": "Crie uma nova empresa.",
         "responses": {
           "201": {
             "description": "Created"
@@ -230,7 +240,8 @@
         "tags": [
           "Companies"
         ],
-        "description": "",
+        "summary": "Busque uma empresa pelo id",
+        "description": "Obtenha uma empresa pelo id.",
         "parameters": [
           {
             "name": "id",
@@ -251,7 +262,8 @@
         "tags": [
           "Companies"
         ],
-        "description": "",
+        "summary": "Atualize os dados da empresa",
+        "description": "Atualize os dados de uma empresa específica.",
         "parameters": [
           {
             "name": "id",
@@ -274,7 +286,8 @@
         "tags": [
           "Categories"
         ],
-        "description": "",
+        "summary": "Obtenha todas as categorias cadastradas",
+        "description": "Obtenha todas as categorias de produto da empresa.",
         "responses": {
           "200": {
             "description": "OK"
@@ -285,7 +298,8 @@
         "tags": [
           "Categories"
         ],
-        "description": "",
+        "summary": "Crie uma nova categoria de produto",
+        "description": "Crie uma nova categoria para ser usada no cadastro de produtos.",
         "responses": {
           "201": {
             "description": "Created"
@@ -298,7 +312,8 @@
         "tags": [
           "Categories"
         ],
-        "description": "",
+        "summary": "Busque uma categoria de produto pelo id",
+        "description": "Obtenha uma categoria de produto pelo id.",
         "parameters": [
           {
             "name": "id",
@@ -319,7 +334,8 @@
         "tags": [
           "Categories"
         ],
-        "description": "",
+        "summary": "Atualize os dados da categoria",
+        "description": "Atualize os dados de uma categoria de produto específica.",
         "parameters": [
           {
             "name": "id",
@@ -340,7 +356,8 @@
         "tags": [
           "Categories"
         ],
-        "description": "",
+        "summary": "Exclua uma categoria de produto",
+        "description": "Exclua uma categoria de produto pelo id.<br><br><b>Obs.:</b> <i>Só é possível excluir categorias que não tem produtos vinculados.</i>",
         "parameters": [
           {
             "name": "id",
@@ -363,7 +380,8 @@
         "tags": [
           "Products"
         ],
-        "description": "",
+        "summary": "Obtenha todas os produtos cadastradas",
+        "description": "Obtenha todos os produtos da empresa.",
         "responses": {
           "200": {
             "description": "OK"
@@ -374,7 +392,8 @@
         "tags": [
           "Products"
         ],
-        "description": "",
+        "summary": "Crie um novo produto",
+        "description": "Adicione um novo produto ao catálogo de produtos da empresa.",
         "responses": {
           "201": {
             "description": "Created"
@@ -387,7 +406,8 @@
         "tags": [
           "Products"
         ],
-        "description": "",
+        "summary": "Filtre os produtos pela categoria",
+        "description": "Obtenha todos os produtos vinculados a uma categoria específica.",
         "parameters": [
           {
             "name": "categoriaId",
@@ -409,7 +429,8 @@
         "tags": [
           "Products"
         ],
-        "description": "",
+        "summary": "Busque um produto pelo id",
+        "description": "Obtenha um produto pelo id.",
         "parameters": [
           {
             "name": "id",
@@ -430,7 +451,8 @@
         "tags": [
           "Products"
         ],
-        "description": "",
+        "summary": "Atualize os dados do produto",
+        "description": "Atualize os dados de um produto específico.",
         "parameters": [
           {
             "name": "id",
@@ -451,7 +473,8 @@
         "tags": [
           "Products"
         ],
-        "description": "",
+        "summary": "Exclua um produto",
+        "description": "Exclua um produto pelo id.",
         "parameters": [
           {
             "name": "id",
@@ -474,7 +497,8 @@
         "tags": [
           "Payment Methods"
         ],
-        "description": "",
+        "summary": "Obtenha todas as formas de pagamento cadastradas",
+        "description": "Obtenha todas as formas de pagamento da empresa.",
         "responses": {
           "200": {
             "description": "OK"
@@ -485,7 +509,8 @@
         "tags": [
           "Payment Methods"
         ],
-        "description": "",
+        "summary": "Crie uma nova forma de pagamento",
+        "description": "Crie uma nova forma de pagamento para ser usada na rotina de pedidos.",
         "responses": {
           "201": {
             "description": "Created"
@@ -498,7 +523,8 @@
         "tags": [
           "Payment Methods"
         ],
-        "description": "",
+        "summary": "Busque uma forma de pagamento pelo id",
+        "description": "Obtenha uma forma de pagamento pelo id.",
         "parameters": [
           {
             "name": "id",
@@ -519,7 +545,8 @@
         "tags": [
           "Payment Methods"
         ],
-        "description": "",
+        "summary": "Atualize os dados da forma de pagamento",
+        "description": "Atualize os dados de uma forma de pagamento específica.",
         "parameters": [
           {
             "name": "id",
@@ -540,7 +567,8 @@
         "tags": [
           "Payment Methods"
         ],
-        "description": "",
+        "summary": "Exclua uma forma de pagamento",
+        "description": "Exclua uma forma de pagamento pelo id.",
         "parameters": [
           {
             "name": "id",
@@ -563,7 +591,8 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "summary": "Crie um novo pedido",
+        "description": "Crie um novo pedido na empresa. Essa funcionalidade deverá ser usada pelo cliente para realização de pedidos sem a necessidade de cadastro na plataforma.",
         "responses": {
           "201": {
             "description": "Created"
@@ -574,7 +603,8 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "summary": "Pesquisa de pedidos usando filtros",
+        "description": "Pesquise pedidos usando filtros de: Empresa, Período de data e Status. Você pode usar apenas um filtro ou combinar todos na mesma busca.",
         "responses": {
           "200": {
             "description": "OK"
@@ -587,7 +617,8 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "summary": "Obtenha os itens de um pedido",
+        "description": "Obtenha todos os itens de um pedido através id do pedido.",
         "parameters": [
           {
             "name": "id",
@@ -610,7 +641,8 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "summary": "Obtenha um pedido pelo id",
+        "description": "Obtenha todos os dados de um pedido através do id, incluindo os itens.",
         "parameters": [
           {
             "name": "id",
@@ -633,7 +665,8 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "summary": "Atualize o status do pedido",
+        "description": "Atualize o status de um pedido através do id.",
         "parameters": [
           {
             "name": "id",
