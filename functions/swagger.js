@@ -126,11 +126,15 @@ const doc = {
                     $qtde: 1,
                     observacao: null,
                 }],
-                status: "pendente",
+                status: {
+                    "@enum": ["pendente", null]
+                },
                 observacoes: null,
             },
             updateOrderStatus: {
-                $status: "aprovado",
+                $status: {
+                    "@enum": ["aprovado", "entrega", "concluido", "cancelado"]
+                },
             },
         }
     },
