@@ -7,6 +7,17 @@ export class OrdersController {
         // #swagger.tags = ['Orders']
         // #swagger.summary = 'Crie um novo pedido'
         // #swagger.description = 'Crie um novo pedido na empresa. Essa funcionalidade deverá ser usada pelo cliente para realização de pedidos sem a necessidade de cadastro na plataforma.'
+        /* #swagger.requestBody = {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/components/schemas/addOrder"
+                        }  
+                    }
+                }
+            }
+        */
         const order = new Order(req.body);
         await new OrderService().save(order);
         res.status(201).send({
@@ -41,6 +52,17 @@ export class OrdersController {
         // #swagger.tags = ['Orders']
         // #swagger.summary = 'Atualize o status do pedido'
         // #swagger.description = 'Atualize o status de um pedido através do id.'
+        /* #swagger.requestBody = {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/components/schemas/updateOrderStatus"
+                        }  
+                    }
+                }
+            }
+        */
         const pedidoId = req.params.id;
         const status = req.body.status;
         await new OrderService().changeStatus(pedidoId, status);

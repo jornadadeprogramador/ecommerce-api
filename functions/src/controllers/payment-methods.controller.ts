@@ -22,6 +22,17 @@ export class PaymentMethodsController {
         // #swagger.tags = ['Payment Methods']
         // #swagger.summary = 'Crie uma nova forma de pagamento'
         // #swagger.description = 'Crie uma nova forma de pagamento para ser usada na rotina de pedidos.'
+        /* #swagger.requestBody = {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/components/schemas/addPaymentMethod"
+                        }  
+                    }
+                }
+            }
+        */
         await new PaymentMethodService().save(req.body);
         res.status(201).send({
             message: `Forma de Pagamento criada com sucesso!`
@@ -32,6 +43,17 @@ export class PaymentMethodsController {
         // #swagger.tags = ['Payment Methods']
         // #swagger.summary = 'Atualize os dados da forma de pagamento'
         // #swagger.description = 'Atualize os dados de uma forma de pagamento específica.'
+        /* #swagger.requestBody = {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/components/schemas/updatePaymentMethod"
+                        }  
+                    }
+                }
+            }
+        */
         const paymentMethodId = req.params.id;
         const paymentMethod = req.body as PaymentMethod;
         await new PaymentMethodService().update(paymentMethodId, paymentMethod);

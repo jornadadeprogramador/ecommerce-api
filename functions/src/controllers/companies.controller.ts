@@ -22,6 +22,17 @@ export class CompaniesController {
         // #swagger.tags = ['Companies']
         // #swagger.summary = 'Crie uma nova empresa'
         // #swagger.description = 'Crie uma nova empresa.'
+        /* #swagger.requestBody = {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/components/schemas/addCompany"
+                        }  
+                    }
+                }
+            }
+        */
         await new CompanyService().save(req.body);
         res.status(201).send({
             message: `Empresa criada com sucesso!`
@@ -32,6 +43,17 @@ export class CompaniesController {
         // #swagger.tags = ['Companies']
         // #swagger.summary = 'Atualize os dados da empresa'
         // #swagger.description = 'Atualize os dados de uma empresa específica.'
+        /* #swagger.requestBody = {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/components/schemas/updateCompany"
+                        }  
+                    }
+                }
+            }
+        */
         const companyId = req.params.id;
         const company = req.body as Company;
         await new CompanyService().update(companyId, company);

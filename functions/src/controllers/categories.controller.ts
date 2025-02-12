@@ -22,6 +22,17 @@ export class CategoriesController {
         // #swagger.tags = ['Categories']
         // #swagger.summary = 'Crie uma nova categoria de produto'
         // #swagger.description = 'Crie uma nova categoria para ser usada no cadastro de produtos.'
+        /* #swagger.requestBody = {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/components/schemas/addCategory"
+                        }  
+                    }
+                }
+            }
+        */
         await new CategoryService().save(req.body);
         res.status(201).send({
             message: `Categoria criada com sucesso!`
@@ -32,6 +43,17 @@ export class CategoriesController {
         // #swagger.tags = ['Categories']
         // #swagger.summary = 'Atualize os dados da categoria'
         // #swagger.description = 'Atualize os dados de uma categoria de produto específica.'
+        /* #swagger.requestBody = {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/components/schemas/updateCategory"
+                        }  
+                    }
+                }
+            }
+        */
         const categoryId = req.params.id;
         const category = req.body as Category;
         await new CategoryService().update(categoryId, category);

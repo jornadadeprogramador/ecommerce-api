@@ -6,6 +6,17 @@ export class AuthController {
         // #swagger.tags = ['Auth']
         // #swagger.summary = 'Autenticação de usuários administradores'
         // #swagger.description = 'Rota utilizada para autenticação de usuários administradores usando e-mail e senha.'
+        /* #swagger.requestBody = {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/components/schemas/login"
+                        }  
+                    }
+                }
+            }
+        */
         const { email, password } = req.body;
 
         const userRecord = await new AuthService().login(email, password);
@@ -19,7 +30,18 @@ export class AuthController {
         // #swagger.tags = ['Auth']
         // #swagger.summary = 'Recuperação de senha'
         // #swagger.description = 'Rota utilizada para recuperação de senhas através do e-mail do usuário. Receba um e-mail para recuperação de senhas.'
-        const { email } = req.body;
+        /* #swagger.requestBody = {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/components/schemas/recovery"
+                        }  
+                    }
+                }
+            }
+        */
+       const { email } = req.body;
         await new AuthService().recovery(email);
         res.end();
     }

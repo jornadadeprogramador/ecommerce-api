@@ -30,6 +30,17 @@ export class ProductsController {
         // #swagger.tags = ['Products']
         // #swagger.summary = 'Crie um novo produto'
         // #swagger.description = 'Adicione um novo produto ao catálogo de produtos da empresa.'
+        /* #swagger.requestBody = {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/components/schemas/addProduct"
+                        }  
+                    }
+                }
+            }
+        */
         await new ProductService().save(req.body);
         res.status(201).send({
             message: `Produto criado com sucesso!`
@@ -40,6 +51,17 @@ export class ProductsController {
         // #swagger.tags = ['Products']
         // #swagger.summary = 'Atualize os dados do produto'
         // #swagger.description = 'Atualize os dados de um produto específico.'
+        /* #swagger.requestBody = {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/components/schemas/updateProduct"
+                        }  
+                    }
+                }
+            }
+        */
         const productId = req.params.id;
         const product = req.body as Product;
         await new ProductService().update(productId, product);

@@ -22,6 +22,17 @@ export class UsersController {
         // #swagger.tags = ['Users']
         // #swagger.summary = 'Crie um novo usuário'
         // #swagger.description = 'Crie um novo usuário para acessar as funcionalidades da empresa.'
+        /* #swagger.requestBody = {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/components/schemas/addUser"
+                        }  
+                    }
+                }
+            }
+        */
         await new UserService().save(req.body);
         res.status(201).send({
             message: `Usuário criado com sucesso!`
@@ -32,6 +43,17 @@ export class UsersController {
         // #swagger.tags = ['Users']
         // #swagger.summary = 'Atualize os dados do usuário'
         // #swagger.description = 'Atualize os dados de um usuário específico.'
+        /*  #swagger.requestBody = {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/components/schemas/updateUser"
+                        }  
+                    }
+                }
+            }
+        */
         const userId = req.params.id;
         const user = req.body as User;
         await new UserService().update(userId, user);
