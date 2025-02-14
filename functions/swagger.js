@@ -136,6 +136,41 @@ const doc = {
                     "@enum": ["aprovado", "entrega", "concluido", "cancelado"]
                 },
             },
+        },
+        parameters: {
+            empresaId: {
+                name: 'empresaId',
+                in: 'query',
+                description: 'Id da empresa',
+                schema: {
+                    type: 'string'
+                }
+            },
+            dataInicio: {
+                name: 'dataInicio',
+                in: 'query',
+                description: 'Data de início do filtro no formato YYYY-MM-DD',
+                schema: {
+                    type: 'date'
+                }
+            },
+            dataFim: {
+                name: 'dataFim',
+                in: 'query',
+                description: 'Data de fim do filtro no formato YYYY-MM-DD',
+                schema: {
+                    type: 'date'
+                }
+            },
+            orderStatus: {
+                name: 'status',
+                in: 'query',
+                description: 'Status do pedido',
+                schema: {
+                    type: 'string',
+                    enum: ['pendente', 'aprovado', 'entrega', 'concluido', 'cancelado']
+                }
+            }
         }
     },
     tags: [
