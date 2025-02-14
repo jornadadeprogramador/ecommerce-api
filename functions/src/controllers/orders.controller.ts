@@ -29,6 +29,26 @@ export class OrdersController {
         // #swagger.tags = ['Orders']
         // #swagger.summary = 'Pesquisa de pedidos usando filtros'
         // #swagger.description = 'Pesquise pedidos usando filtros de: Empresa, Período de data e Status. Você pode usar apenas um filtro ou combinar todos na mesma busca.'
+        /* #swagger.parameters['empresaId'] = {
+                description: 'Id da empresa',
+                type: 'string'
+            }
+           #swagger.parameters['dataInicio'] = {
+                description: 'Data de início do filtro no formato YYYY-MM-DD',
+                type: 'date'
+            }
+           #swagger.parameters['dataFim'] = {
+                description: 'Data de fim do filtro no formato YYYY-MM-DD',
+                type: 'date'
+            }
+           #swagger.parameters['status'] = {
+                description: 'Status do pedido',
+                type: 'string',
+                schema: {
+                    '@enum': ['pendente', 'aprovado', 'entrega', 'concluido', 'cancelado']
+                }
+            }
+        */
         const orders = await new OrderService().search(req.query as QueryParamsOrder);
         res.send(orders);
     }

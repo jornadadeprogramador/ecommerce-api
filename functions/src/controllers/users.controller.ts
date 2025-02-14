@@ -14,6 +14,7 @@ export class UsersController {
         // #swagger.tags = ['Users']
         // #swagger.summary = 'Busque um usuário pelo id'
         // #swagger.description = 'Obtenha um usuário pelo id.'
+        // #swagger.parameters['id'] = { description: 'Id do usuário' }
         const userId = req.params.id;
         res.send(await new UserService().getById(userId));
     }

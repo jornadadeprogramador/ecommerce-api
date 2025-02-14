@@ -164,7 +164,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "description": "Id do usuário"
           }
         ],
         "responses": {
@@ -834,6 +835,47 @@
         ],
         "summary": "Pesquisa de pedidos usando filtros",
         "description": "Pesquise pedidos usando filtros de: Empresa, Período de data e Status. Você pode usar apenas um filtro ou combinar todos na mesma busca.",
+        "parameters": [
+          {
+            "name": "empresaId",
+            "description": "Id da empresa",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dataInicio",
+            "description": "Data de início do filtro no formato YYYY-MM-DD",
+            "in": "query",
+            "schema": {
+              "type": "date"
+            }
+          },
+          {
+            "name": "dataFim",
+            "description": "Data de fim do filtro no formato YYYY-MM-DD",
+            "in": "query",
+            "schema": {
+              "type": "date"
+            }
+          },
+          {
+            "name": "status",
+            "description": "Status do pedido",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "pendente",
+                "aprovado",
+                "entrega",
+                "concluido",
+                "cancelado"
+              ]
+            },
+            "in": "query"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
