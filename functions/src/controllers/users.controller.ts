@@ -7,6 +7,32 @@ export class UsersController {
         // #swagger.tags = ['Users']
         // #swagger.summary = 'Obtenha todos os usuários cadastrados'
         // #swagger.description = 'Obtenha todos os usuários da empresa.'
+        /*
+            #swagger.responses[200] = {
+                description: 'Lista de todos os usuários',
+                content: {
+                    "application/json": {
+                        schema: {
+                            type: 'array',
+                            items: {
+                                type: 'object',
+                                properties: {
+                                    id: {
+                                        type: 'string'
+                                    },
+                                    nome: {
+                                        type: 'string'
+                                    },
+                                    email: {
+                                        type: 'string'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+         */
         res.send(await new UserService().getAll());
     }
 
@@ -15,6 +41,29 @@ export class UsersController {
         // #swagger.summary = 'Busque um usuário pelo id'
         // #swagger.description = 'Obtenha um usuário pelo id.'
         // #swagger.parameters['id'] = { description: 'Id do usuário' }
+        /*
+            #swagger.responses[200] = {
+                description: 'Dados do usuário',
+                content: {
+                    "application/json": {
+                        schema: {
+                            type: 'object',
+                            properties: {
+                                id: {
+                                    type: 'string'
+                                },
+                                nome: {
+                                    type: 'string'
+                                },
+                                email: {
+                                    type: 'string'
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+         */
         const userId = req.params.id;
         res.send(await new UserService().getById(userId));
     }
