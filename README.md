@@ -23,8 +23,8 @@ Essas são algumas das principais funcionalidades, existem várias outras funcio
   - [Cloud Storage](https://firebase.google.com/docs/storage)
   - [Cloud Functions](https://firebase.google.com/docs/functions)
 - [Celebrate/Joi](https://www.npmjs.com/package/celebrate)
-- Firebase Emulators
-- Swagger (Em breve)
+- [Firebase Emulators](https://firebase.google.com/docs/emulator-suite)
+- [Swagger](https://swagger-autogen.github.io)
 
 ## Instalação
 
