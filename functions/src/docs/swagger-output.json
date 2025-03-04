@@ -143,18 +143,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "nome": {
-                        "type": "string"
-                      },
-                      "email": {
-                        "type": "string"
-                      }
-                    }
+                    "$ref": "#/components/schemas/User"
                   }
                 }
               }
@@ -219,18 +208,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "nome": {
-                      "type": "string"
-                    },
-                    "email": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/User"
                 }
               }
             }
@@ -1058,6 +1036,23 @@
         "required": [
           "email"
         ]
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "2mkre4j5gPo0BFGl5pyi"
+          },
+          "nome": {
+            "type": "string",
+            "example": "João da Silva"
+          },
+          "email": {
+            "type": "string",
+            "example": "joaodasilva@mail.com"
+          }
+        }
       },
       "addUser": {
         "type": "object",

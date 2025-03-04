@@ -26,6 +26,11 @@ const doc = {
             recovery: {
                 $email: "usuario@mail.com",
             },
+            User: {
+                id: "2mkre4j5gPo0BFGl5pyi",
+                nome: "João da Silva",
+                email: "joaodasilva@mail.com",
+            },
             addUser: {
                 $nome: "João da Silva",
                 $email: "joaodasilva@mail.com",

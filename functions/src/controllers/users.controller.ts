@@ -15,18 +15,7 @@ export class UsersController {
                         schema: {
                             type: 'array',
                             items: {
-                                type: 'object',
-                                properties: {
-                                    id: {
-                                        type: 'string'
-                                    },
-                                    nome: {
-                                        type: 'string'
-                                    },
-                                    email: {
-                                        type: 'string'
-                                    }
-                                }
+                                $ref: '#/components/schemas/User'
                             }
                         }
                     }
@@ -47,18 +36,7 @@ export class UsersController {
                 content: {
                     "application/json": {
                         schema: {
-                            type: 'object',
-                            properties: {
-                                id: {
-                                    type: 'string'
-                                },
-                                nome: {
-                                    type: 'string'
-                                },
-                                email: {
-                                    type: 'string'
-                                }
-                            }
+                            $ref: '#/components/schemas/User'
                         }
                     }
                 }
