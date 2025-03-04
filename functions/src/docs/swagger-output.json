@@ -51,7 +51,19 @@
         "description": "Rota utilizada para autenticação de usuários administradores usando e-mail e senha.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Token do usuário autenticado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -74,8 +86,8 @@
         "summary": "Recuperação de senha",
         "description": "Rota utilizada para recuperação de senhas através do e-mail do usuário. Receba um e-mail para recuperação de senhas.",
         "responses": {
-          "default": {
-            "description": ""
+          "204": {
+            "description": "No Content"
           }
         },
         "requestBody": {
@@ -99,7 +111,19 @@
         "description": "Rota utilizada para autenticação de usuários clientes para realização de pedidos sem a necessidade de um cadastro prévio.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Token do usuário anônimo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
